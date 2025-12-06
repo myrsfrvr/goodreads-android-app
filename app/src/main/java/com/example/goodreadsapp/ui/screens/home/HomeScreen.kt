@@ -83,7 +83,7 @@ private fun BooksGrid(
         contentPadding = PaddingValues(8.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier.height(300.dp)
+        modifier = Modifier.height(540.dp)
     ) {
         items(books) { book ->
 
@@ -106,7 +106,7 @@ private fun BooksGrid(
 
                 Text(
                     text = cleanTitle,
-                    fontSize = 16.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.padding(top = 4.dp)
@@ -114,7 +114,7 @@ private fun BooksGrid(
 
                 Text(
                     text = book.author,
-                    fontSize = 13.sp,
+                    fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
