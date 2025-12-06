@@ -4,10 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.goodreadsapp.ui.screens.HomeScreen
+import com.example.goodreadsapp.data.network.RetrofitClient
+import com.example.goodreadsapp.data.repository.BooksRepository
+import com.example.goodreadsapp.ui.screens.home.HomeScreen
 import com.example.goodreadsapp.ui.screens.SearchScreen
 import com.example.goodreadsapp.ui.screens.MyBooksScreen
 import com.example.goodreadsapp.ui.screens.BookDetailScreen
+import com.example.goodreadsapp.ui.screens.home.HomeViewModel
 
 @Composable
 fun AppNavHost(navController: NavHostController) {
@@ -15,7 +18,12 @@ fun AppNavHost(navController: NavHostController) {
         navController = navController,
         startDestination = NavRoutes.Home.route
     ) {
-        composable(NavRoutes.Home.route) { HomeScreen(navController) }
+        val api = RetrofitClient.create("a1b147d54cmsh764647262b789e5p1b9179jsn9ad671dc4933")
+        val repo = BooksRepository(api)
+        val homeVM = HomeViewModel(repo)
+
+        composable(NavRoutes.Home.route) { HomeScreen(viewModel = homeVM,
+            onBookClick = { id -> /* navigate later */ }) }
         composable(NavRoutes.Search.route) { SearchScreen(navController) }
         composable(NavRoutes.MyBooks.route) { MyBooksScreen(navController) }
         composable(NavRoutes.BookDetail.route) { backStack ->
