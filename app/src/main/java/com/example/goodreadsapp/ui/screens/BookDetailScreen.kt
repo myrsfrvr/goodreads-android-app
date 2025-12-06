@@ -1,0 +1,10 @@
+package com.example.goodreadsapp.ui.screens
+
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+
+@Composable
+fun BookDetailScreen(navController: NavController, bookId: String) {
+    Text("Book Detail for $bookId")
+}
