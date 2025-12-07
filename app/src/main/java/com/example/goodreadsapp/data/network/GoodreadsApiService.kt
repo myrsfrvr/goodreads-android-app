@@ -13,9 +13,6 @@ interface GoodreadsApiService {
         @Path("genre") genre: String
     ): GenreBooksResponse
 
-//    @GET("search")
-//    suspend fun searchBooks(@Query("q") query: String): SearchResponse
-
     @GET("search")
     suspend fun searchBooks(
         @Query("q") query: String

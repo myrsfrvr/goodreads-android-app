@@ -37,7 +37,6 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
     ) {
         val homeVM = HomeViewModel(repo)
         val searchVM = SearchViewModel(repo)
-//        val myBooksVM = MyBooksViewModel()
 
 
         composable(NavRoutes.Home.route) {
@@ -93,7 +92,6 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
                     val api =
                         GoodreadsDetailsRetrofitClient.create("a1b147d54cmsh764647262b789e5p1b9179jsn9ad671dc4933")
                     val repo = BookDetailRepository(api)
-//                    val viewModel = BookDetailViewModel(repo)
                     val factory = BookDetailViewModelFactory(repo)
                     val viewModel: BookDetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel(factory = factory)
 

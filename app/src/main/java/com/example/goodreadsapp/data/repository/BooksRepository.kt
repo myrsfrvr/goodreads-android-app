@@ -9,14 +9,6 @@ class BooksRepository(
 
     suspend fun getBestBooks(genre: String) = api.getBestBooksByGenre(genre)
 
-//    suspend fun searchBooks(query: String): List<BookDto> {
-//        return api.searchBooks(query)
-//    }
-//
-//    suspend fun getBestBooksByGenre(genre: String): List<BookDto> {
-//        return api.getBestBooksByGenre(genre).books
-//    }
-
     suspend fun searchBooks(query: String): List<BookDto> =
         api.searchBooks(query)
 

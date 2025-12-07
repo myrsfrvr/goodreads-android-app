@@ -24,7 +24,6 @@ import com.example.goodreadsapp.ui.screens.search.BooksGrid
 fun BookListScreen(
     listType: String,
     navController: NavController,
-//    viewModel: MyBooksViewModel = MyBooksViewModel(),
     viewModel: MyBooksViewModel = viewModel(),
     onBookClick: (Long) -> Unit
 ) {
@@ -44,7 +43,6 @@ fun BookListScreen(
                 .height(56.dp)
                 .background(Color(0xFFE4E2D5)),
         ) {
-            // Back button
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = "Back",
@@ -54,7 +52,6 @@ fun BookListScreen(
                     .clickable { navController.popBackStack() }
             )
 
-            // Logo centered
             Image(
                 painter = painterResource(R.drawable.home_logo),
                 contentDescription = null,

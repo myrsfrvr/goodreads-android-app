@@ -6,7 +6,6 @@ data class BookDetailDto(
     val title: String,
     val description: String,
     val imageUrl: String,
-//    val bookGenres: List<String>,
     val bookGenres: List<Genre>,
     val author: Author,
     val stats: Stats

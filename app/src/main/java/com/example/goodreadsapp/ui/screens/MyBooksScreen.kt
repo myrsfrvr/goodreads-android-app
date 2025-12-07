@@ -20,7 +20,6 @@ import com.example.goodreadsapp.ui.navigation.NavRoutes
 
 @Composable
 fun MyBooksScreen(navController: NavController, viewModel: MyBooksViewModel = viewModel()) {
-//fun MyBooksScreen(navController: NavController, viewModel: MyBooksViewModel = MyBooksViewModel()) {
     Column(modifier = Modifier.fillMaxSize()) {
         // Top Bar
         Box(
@@ -30,7 +29,6 @@ fun MyBooksScreen(navController: NavController, viewModel: MyBooksViewModel = vi
                 .background(Color(0xFFE4E2D5)),
             contentAlignment = Alignment.Center
         ) {
-//            Text("home_logo", style = MaterialTheme.typography.titleLarge)
             Image(
                 painter = painterResource(R.drawable.home_logo),
                 contentDescription = null,
