@@ -1,6 +1,7 @@
 package com.example.goodreadsapp.ui.screens.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -33,6 +34,7 @@ fun HomeScreen(
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(24.dp)
+
         ) {
             genresMap.forEach { (genre, books) ->
 
@@ -95,6 +97,7 @@ private fun BooksGrid(
                 modifier = Modifier
                     .padding(4.dp)
                     .fillMaxWidth()
+                    .clickable { onBookClick(book.id) }
             ) {
                 AsyncImage(
                     model = book.smallImageURL,
