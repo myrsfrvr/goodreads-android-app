@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.goodreadsapp.R
 import com.example.goodreadsapp.ui.screens.search.BooksGrid
@@ -23,7 +24,8 @@ import com.example.goodreadsapp.ui.screens.search.BooksGrid
 fun BookListScreen(
     listType: String,
     navController: NavController,
-    viewModel: MyBooksViewModel = MyBooksViewModel(),
+//    viewModel: MyBooksViewModel = MyBooksViewModel(),
+    viewModel: MyBooksViewModel = viewModel(),
     onBookClick: (Long) -> Unit
 ) {
     val books = when (listType) {

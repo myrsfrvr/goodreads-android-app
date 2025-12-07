@@ -13,12 +13,14 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.goodreadsapp.R
 import com.example.goodreadsapp.ui.navigation.NavRoutes
 
 @Composable
-fun MyBooksScreen(navController: NavController, viewModel: MyBooksViewModel = MyBooksViewModel()) {
+fun MyBooksScreen(navController: NavController, viewModel: MyBooksViewModel = viewModel()) {
+//fun MyBooksScreen(navController: NavController, viewModel: MyBooksViewModel = MyBooksViewModel()) {
     Column(modifier = Modifier.fillMaxSize()) {
         // Top Bar
         Box(

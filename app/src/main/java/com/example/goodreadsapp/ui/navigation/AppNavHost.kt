@@ -4,6 +4,7 @@ import BookDetailViewModelFactory
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,16 +25,20 @@ import com.example.goodreadsapp.ui.screens.search.SearchViewModel
 
 @Composable
 fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
+    val myBooksVM: MyBooksViewModel = viewModel()
+    val api = RetrofitClient.create("a1b147d54cmsh764647262b789e5p1b9179jsn9ad671dc4933")
+    val repo = BooksRepository(api)
+
+
     NavHost(
         navController = navController,
         startDestination = NavRoutes.Home.route,
         modifier = modifier
     ) {
-        val api = RetrofitClient.create("a1b147d54cmsh764647262b789e5p1b9179jsn9ad671dc4933")
-        val repo = BooksRepository(api)
         val homeVM = HomeViewModel(repo)
         val searchVM = SearchViewModel(repo)
-        val myBooksVM = MyBooksViewModel()
+//        val myBooksVM = MyBooksViewModel()
+
 
         composable(NavRoutes.Home.route) {
             HomeScreen(
@@ -65,6 +70,7 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
         }
         composable(NavRoutes.MyBooks.route) {
             MyBooksScreen(navController, viewModel = myBooksVM)
+
         }
         composable("mybooks/list/{listType}") { backStack ->
             val listType = backStack.arguments?.getString("listType") ?: "Reading"
