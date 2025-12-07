@@ -1,5 +1,6 @@
 package com.example.goodreadsapp.ui.navigation
 
+import BookDetailViewModelFactory
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -34,22 +35,32 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
         val searchVM = SearchViewModel(repo)
         val myBooksVM = MyBooksViewModel()
 
-        composable(NavRoutes.Home.route) { HomeScreen(viewModel = homeVM,
-            onBookClick = { id ->
-                navController.navigate(NavRoutes.BookDetail.createRoute(id)) }) }
-        composable(NavRoutes.Search.route) { SearchScreen(viewModel= searchVM,
-            onBookClick= { id ->
-                navController.navigate(NavRoutes.BookDetail.createRoute(id)) },
-            onGenreClick= { genre ->
-                navController.navigate(NavRoutes.Genre.createRoute(genre)) }
-            ) }
+        composable(NavRoutes.Home.route) {
+            HomeScreen(
+                viewModel = homeVM,
+                onBookClick = { id ->
+                    navController.navigate(NavRoutes.BookDetail.createRoute(id))
+                })
+        }
+        composable(NavRoutes.Search.route) {
+            SearchScreen(
+                viewModel = searchVM,
+                onBookClick = { id ->
+                    navController.navigate(NavRoutes.BookDetail.createRoute(id))
+                },
+                onGenreClick = { genre ->
+                    navController.navigate(NavRoutes.Genre.createRoute(genre))
+                }
+            )
+        }
         composable(NavRoutes.Genre.route) { backStack ->
             val genre = backStack.arguments?.getString("genre") ?: ""
             GenreScreen(
                 genre = genre,
                 viewModel = searchVM,
-                onBookClick = {bookId ->
-                    navController.navigate(NavRoutes.BookDetail.createRoute(bookId))}
+                onBookClick = { bookId ->
+                    navController.navigate(NavRoutes.BookDetail.createRoute(bookId))
+                }
             )
         }
         composable(NavRoutes.MyBooks.route) {
@@ -73,9 +84,12 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
             if (bookIdString != null) {
                 val bookId = bookIdString.toLongOrNull()
                 if (bookId != null && bookId != 0L) {
-                    val api = GoodreadsDetailsRetrofitClient.create("a1b147d54cmsh764647262b789e5p1b9179jsn9ad671dc4933")
+                    val api =
+                        GoodreadsDetailsRetrofitClient.create("a1b147d54cmsh764647262b789e5p1b9179jsn9ad671dc4933")
                     val repo = BookDetailRepository(api)
-                    val viewModel = BookDetailViewModel(repo)
+//                    val viewModel = BookDetailViewModel(repo)
+                    val factory = BookDetailViewModelFactory(repo)
+                    val viewModel: BookDetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel(factory = factory)
 
                     BookDetailScreen(
                         navController = navController,
