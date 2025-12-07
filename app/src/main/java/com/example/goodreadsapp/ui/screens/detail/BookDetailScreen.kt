@@ -47,7 +47,7 @@ fun BookDetailScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFFFF4E6))
+                .background(Color(0xFFE4E2D5))
                 .padding(12.dp)
         ) {
             Icon(

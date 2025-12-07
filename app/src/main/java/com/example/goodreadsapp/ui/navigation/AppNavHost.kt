@@ -10,9 +10,11 @@ import com.example.goodreadsapp.data.network.GoodreadsDetailsRetrofitClient
 import com.example.goodreadsapp.data.network.RetrofitClient
 import com.example.goodreadsapp.data.repository.BookDetailRepository
 import com.example.goodreadsapp.data.repository.BooksRepository
+import com.example.goodreadsapp.ui.screens.BookListScreen
 import com.example.goodreadsapp.ui.screens.home.HomeScreen
 import com.example.goodreadsapp.ui.screens.search.SearchScreen
 import com.example.goodreadsapp.ui.screens.MyBooksScreen
+import com.example.goodreadsapp.ui.screens.MyBooksViewModel
 import com.example.goodreadsapp.ui.screens.detail.BookDetailScreen
 import com.example.goodreadsapp.ui.screens.detail.BookDetailViewModel
 import com.example.goodreadsapp.ui.screens.home.HomeViewModel
@@ -30,6 +32,7 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
         val repo = BooksRepository(api)
         val homeVM = HomeViewModel(repo)
         val searchVM = SearchViewModel(repo)
+        val myBooksVM = MyBooksViewModel()
 
         composable(NavRoutes.Home.route) { HomeScreen(viewModel = homeVM,
             onBookClick = { id ->
@@ -49,7 +52,21 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
                     navController.navigate(NavRoutes.BookDetail.createRoute(bookId))}
             )
         }
-        composable(NavRoutes.MyBooks.route) { MyBooksScreen(navController) }
+        composable(NavRoutes.MyBooks.route) {
+            MyBooksScreen(navController, viewModel = myBooksVM)
+        }
+        composable("mybooks/list/{listType}") { backStack ->
+            val listType = backStack.arguments?.getString("listType") ?: "Reading"
+            BookListScreen(
+                listType = listType,
+                navController = navController,
+                viewModel = myBooksVM,
+                onBookClick = { bookId ->
+                    navController.navigate(NavRoutes.BookDetail.createRoute(bookId))
+                }
+            )
+
+        }
         composable(NavRoutes.BookDetail.route) { backStack ->
             val bookIdString = backStack.arguments?.getString("bookId")
 
