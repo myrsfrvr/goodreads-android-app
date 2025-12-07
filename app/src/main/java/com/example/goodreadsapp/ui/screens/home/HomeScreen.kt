@@ -66,6 +66,7 @@ private fun TopBar() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
+            .background(Color(0xFFE4E2D5))
             .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {

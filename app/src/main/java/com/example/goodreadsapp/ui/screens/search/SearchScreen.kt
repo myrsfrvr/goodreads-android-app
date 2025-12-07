@@ -12,7 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.goodreadsapp.data.model.BookDto
 
@@ -96,6 +98,10 @@ fun BooksGrid(books: List<BookDto>, onBookClick: (Long) -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(books) { book ->
+            val cleanTitle = remember(book.title) {
+                book.title.replace(Regex("\\s*\\(.*?\\)"), "")
+            }
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -106,8 +112,18 @@ fun BooksGrid(books: List<BookDto>, onBookClick: (Long) -> Unit) {
                     contentDescription = null,
                     modifier = Modifier.fillMaxWidth().height(150.dp)
                 )
-                Text(book.title)
-                Text(book.author)
+                Text(
+                    text = cleanTitle,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+                Text(
+                    text = book.author,
+                    fontSize = 16.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }
