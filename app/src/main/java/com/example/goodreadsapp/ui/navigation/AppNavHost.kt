@@ -13,8 +13,8 @@ import com.example.goodreadsapp.data.repository.BooksRepository
 import com.example.goodreadsapp.ui.screens.home.HomeScreen
 import com.example.goodreadsapp.ui.screens.search.SearchScreen
 import com.example.goodreadsapp.ui.screens.MyBooksScreen
-import com.example.goodreadsapp.ui.screens.BookDetailScreen
-import com.example.goodreadsapp.ui.screens.BookDetailViewModel
+import com.example.goodreadsapp.ui.screens.detail.BookDetailScreen
+import com.example.goodreadsapp.ui.screens.detail.BookDetailViewModel
 import com.example.goodreadsapp.ui.screens.home.HomeViewModel
 import com.example.goodreadsapp.ui.screens.search.GenreScreen
 import com.example.goodreadsapp.ui.screens.search.SearchViewModel

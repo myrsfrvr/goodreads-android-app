@@ -1,4 +1,4 @@
-package com.example.goodreadsapp.ui.screens
+package com.example.goodreadsapp.ui.screens.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,12 +16,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.example.goodreadsapp.ui.screens.BookDetailViewModel
+import com.example.goodreadsapp.ui.screens.detail.BookDetailViewModel
 
 @Composable
 fun BookDetailScreen(
-    navController: androidx.navigation.NavHostController,
+    navController: NavHostController,
     bookId: Long,
     viewModel: BookDetailViewModel
 ) {

@@ -1,4 +1,4 @@
-package com.example.goodreadsapp.ui.screens
+package com.example.goodreadsapp.ui.screens.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
