@@ -13,7 +13,7 @@ This is a basic Android app designed to track books using the Goodreads API. The
 - **Kotlin**: Programming language used for Android development.
 - **Jetpack Compose**: UI toolkit for building native Android UIs.
 - **MVVM**: Architecture pattern used for separating business logic from UI code.
-- **Goodreads API**: External API used to fetch book data ([link](https://rapidapi.com/valengguerra-Pkt5FuIg07/api/goodreads-books "@embed"))
+- **Goodreads API**: External API used to fetch book data ([link](https://rapidapi.com/valengguerra-Pkt5FuIg07/api/goodreads-books "@embed")).
 
 ---
 
@@ -50,7 +50,7 @@ Toto je základní aplikace pro Android, která slouží k sledování knih pomo
 - **Kotlin**: Programovací jazyk používaný pro vývoj pro Android.
 - **Jetpack Compose**: Nástroj pro tvorbu uživatelského rozhraní v nativní aplikaci pro Android.
 - **MVVM**: Architektonický vzor pro oddělení byznys logiky od kódu uživatelského rozhraní.
-- **Goodreads API**: Externí API pro získávání dat o knihách (doporučení, vyhledávání, atd.).
+- **Goodreads API**: Externí API pro získávání dat o knihách ([odkaz](https://rapidapi.com/valengguerra-Pkt5FuIg07/api/goodreads-books "@embed")).
 
 ---
 
